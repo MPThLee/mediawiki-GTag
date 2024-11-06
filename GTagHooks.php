@@ -21,8 +21,13 @@ class GTagHooks {
 		$enableTCF = $config->get( 'GTagEnableTCF' );
 		$trackSensitive = $config->get( 'GTagTrackSensitivePages' );
 
-		if ( $gaId === '' || !preg_match( '/^(UA-[0-9]+-[0-9]+|G-[0-9A-Z]+)$/', $gaId ) ) {
-			// extension not configured yet or invalid configuration, no-op
+		if ( $gaId === '') {
+			// extension not configured yet. no-op
+			return;
+		}
+
+		if ( !preg_match( '/^(UA-[0-9]+-[0-9]+|G-[0-9A-Z]+)$/', $gaId ) ) {
+			// invalid configuration. no-op
 			return;
 		}
 
